@@ -10,16 +10,7 @@
         "prepare": "husky install"
     },
     "keywords": [
-        "template",
-        "starter",
-        "boilerplate",
-        "typescript",
-        "nodemon",
-        "eslint",
-        "airbnb",
-        "prettier",
-        "lint-staged",
-        "jest"
+        "typescript"
     ],
     "author": "Benjamin Janssens <benji.janssens@gmail.com> (https://benjijanssens.com)",
     "license": "ISC",
