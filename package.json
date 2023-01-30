@@ -9,11 +9,20 @@
         "test": "jest",
         "prepare": "husky install"
     },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/benjiJanssens/typescript-starter.git"
+    },
     "keywords": [
         "typescript"
     ],
     "author": "Benjamin Janssens <benji.janssens@gmail.com> (https://benjijanssens.com)",
     "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/benjiJanssens/typescript-starter/issues",
+        "email": "benji.janssens@gmail.com"
+    },
+    "homepage": "https://github.com/benjiJanssens/typescript-starter#readme",
     "devDependencies": {
         "@types/jest": "^29.2.6",
         "@typescript-eslint/eslint-plugin": "^5.48.2",
