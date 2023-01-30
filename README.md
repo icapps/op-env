@@ -29,6 +29,18 @@ npm run build
 npm run start
 ```
 
+### Docker
+
+```bash
+# Create a Docker image
+docker build -t typescript-starter .
+# Start up a Docker container
+docker run --name typescript-starter -it typescript-starter
+
+# Or just use Docker Compose
+docker compose up
+```
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first
