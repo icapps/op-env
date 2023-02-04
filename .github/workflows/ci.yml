@@ -8,7 +8,7 @@ jobs:
         needs: install_dependencies
         runs-on: ubuntu-latest
         steps:
-            - uses: ./.github/workflows/install_dependencies.yml
+            - uses: ./.github/actions/install_dependencies
             - run: npm run test
 
     build:
@@ -16,5 +16,5 @@ jobs:
         needs: install_dependencies
         runs-on: ubuntu-latest
         steps:
-            - uses: ./.github/workflows/install_dependencies.yml
+            - uses: ./.github/actions/install_dependencies
             - run: npm run build
