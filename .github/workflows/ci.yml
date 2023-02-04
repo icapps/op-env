@@ -5,7 +5,6 @@ on: [push, pull_request]
 jobs:
     test:
         name: Test
-        needs: install_dependencies
         runs-on: ubuntu-latest
         steps:
             - uses: ./.github/actions/install_dependencies
@@ -13,7 +12,6 @@ jobs:
 
     build:
         name: Build
-        needs: install_dependencies
         runs-on: ubuntu-latest
         steps:
             - uses: ./.github/actions/install_dependencies
