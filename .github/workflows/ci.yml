@@ -7,24 +7,14 @@ jobs:
         name: Test
         needs: install_dependencies
         runs-on: ubuntu-latest
-        uses: ./.github/workflows/install_dependencies.yml
         steps:
-            - uses: actions/checkout@v3
-            - uses: actions/setup-node@v3
-              with:
-                  node-version: 18
-                  cache: 'npm'
+            - uses: ./.github/workflows/install_dependencies.yml
             - run: npm run test
 
     build:
         name: Build
         needs: install_dependencies
         runs-on: ubuntu-latest
-        uses: ./.github/workflows/install_dependencies.yml
         steps:
-            - uses: actions/checkout@v3
-            - uses: actions/setup-node@v3
-              with:
-                  node-version: 18
-                  cache: 'npm'
+            - uses: ./.github/workflows/install_dependencies.yml
             - run: npm run build
