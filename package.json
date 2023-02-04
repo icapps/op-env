@@ -23,7 +23,12 @@
         "email": "benji.janssens@gmail.com"
     },
     "homepage": "https://github.com/benjiJanssens/typescript-starter#readme",
+    "dependencies": {
+        "dotenv-safe": "^8.2.0",
+        "envalid": "^7.3.1"
+    },
     "devDependencies": {
+        "@types/dotenv-safe": "^8.1.2",
         "@types/jest": "^29.2.6",
         "@typescript-eslint/eslint-plugin": "^5.48.2",
         "@typescript-eslint/parser": "^5.48.2",
