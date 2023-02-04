@@ -24,11 +24,11 @@ pipelines:
 
         - parallel:
               - step:
-                    name: Lint
+                    name: Test
                     caches:
                         - node
                     script:
-                        - npm run lint
+                        - npm run test
 
               - step:
                     name: Build

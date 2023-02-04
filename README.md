@@ -12,6 +12,7 @@ typescript-starter is starter template to quickly get started with TypeScript ðŸ
 -   [Docker](https://www.docker.com)
 -   [Bitbucket Pipelines](https://bitbucket.org/product/features/pipelines)
     -   Make sure to set the `BITBUCKET_USERNAME` and `BITBUCKET_APP_PASSWORD` repository variables.<br>The [app password](https://support.atlassian.com/bitbucket-cloud/docs/app-passwords) should have the `Pipelines Write` and `Repositories Read` permissions.
+-   [GitHub Actions](https://github.com/features/actions)
 
 ## Usage
 
