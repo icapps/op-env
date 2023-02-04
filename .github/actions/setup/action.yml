@@ -1,11 +1,10 @@
 name: Install dependencies
 
-description: 'Check out the repository, set up a Node.js environment and install dependencies'
+description: 'Set up a Node.js environment and install dependencies'
 
 runs:
     using: 'composite'
     steps:
-        - uses: actions/checkout@v3
         - uses: actions/setup-node@v3
           with:
               node-version: 18

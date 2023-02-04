@@ -7,6 +7,7 @@ jobs:
         name: Test
         runs-on: ubuntu-latest
         steps:
+            - uses: actions/checkout@v3
             - uses: ./.github/actions/setup
             - run: npm run test
 
@@ -14,5 +15,6 @@ jobs:
         name: Build
         runs-on: ubuntu-latest
         steps:
+            - uses: actions/checkout@v3
             - uses: ./.github/actions/setup
             - run: npm run build
