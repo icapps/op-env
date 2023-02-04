@@ -9,6 +9,9 @@ typescript-starter is starter template to quickly get started with TypeScript ðŸ
 -   [Prettier](https://www.npmjs.com/package/prettier)
 -   [lint-staged](https://www.npmjs.com/package/lint-staged)
 -   [Jest](https://www.npmjs.com/package/jest)
+-   [Docker](https://www.docker.com)
+-   [Bitbucket Pipelines](https://bitbucket.org/product/features/pipelines)
+    -   Make sure to set the `BITBUCKET_USERNAME` and `BITBUCKET_APP_PASSWORD` repository variables. The [app password](https://support.atlassian.com/bitbucket-cloud/docs/app-passwords) should have the `Pipelines Write` and `Repositories Read` permissions.
 
 ## Usage
 
@@ -50,4 +53,4 @@ Please make sure to update tests as appropriate.
 
 ## License
 
-[ISC](/LICENSE)
+[ISC](LICENSE)
