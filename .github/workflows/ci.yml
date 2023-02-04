@@ -7,12 +7,12 @@ jobs:
         name: Test
         runs-on: ubuntu-latest
         steps:
-            - uses: ./.github/actions/setup.yml
+            - uses: ./.github/actions/setup
             - run: npm run test
 
     build:
         name: Build
         runs-on: ubuntu-latest
         steps:
-            - uses: ./.github/actions/setup.yml
+            - uses: ./.github/actions/setup
             - run: npm run build
