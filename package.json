@@ -6,6 +6,7 @@
         "start": "node dist/index.js",
         "dev": "nodemon src/index.ts",
         "build": "rimraf dist && tsc --project tsconfig.build.json",
+        "lint": "eslint --ignore-path .gitignore",
         "test": "jest",
         "prepare": "husky install"
     },

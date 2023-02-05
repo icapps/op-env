@@ -24,6 +24,13 @@ pipelines:
 
         - parallel:
               - step:
+                    name: Lint
+                    caches:
+                        - node
+                    script:
+                        - npm run lint
+
+              - step:
                     name: Test
                     caches:
                         - node
