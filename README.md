@@ -19,7 +19,7 @@ typescript-starter is starter template to quickly get started with TypeScript ğŸ
 ### Development
 
 ```bash
-# Start a development server
+# Run in development mode
 npm run dev
 ```
 
@@ -29,7 +29,7 @@ npm run dev
 # Create a production build
 npm run build
 
-# Start the production build
+# Run the production build
 npm run start
 ```
 
