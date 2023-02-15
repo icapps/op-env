@@ -8,13 +8,20 @@ typescript-starter is starter template to quickly get started with TypeScript ðŸ
 -   [ESLint](https://www.npmjs.com/package/eslint) with [Airbnb's ESLint config](https://www.npmjs.com/package/eslint-config-airbnb-base)
 -   [Prettier](https://www.npmjs.com/package/prettier)
 -   [lint-staged](https://www.npmjs.com/package/lint-staged)
--   [Jest](https://www.npmjs.com/package/jest)
--   [Docker](https://www.docker.com)
 -   [GitHub Actions](https://github.com/features/actions)
--   [Bitbucket Pipelines](https://bitbucket.org/product/features/pipelines)
-    -   Make sure to set the `BITBUCKET_USERNAME` and `BITBUCKET_APP_PASSWORD` repository variables.<br>The [app password](https://support.atlassian.com/bitbucket-cloud/docs/app-passwords) should have the `Pipelines Write` and `Repositories Read` permissions.
 
 ## Usage
+
+Get
+op-env get -- -n <name> -e <environment>
+-n, --name <name> Name of the item
+-e, --environment <environment> Environment to create the item in
+
+Set
+op-env set -- -v <vault> -f <filename> -t <title>
+-v, --vault <vault> Vault to create the item in
+-f, --env-file <envFile> Path to the env file
+-t, --title <title> Title of the item
 
 ### Development
 

@@ -3,9 +3,10 @@
     "version": "1.0.0",
     "description": "Get and set environment variables in 1password",
     "scripts": {
-        "start": "node dist/get-env.js",
-        "get": "nodemon src/get-env.ts",
-        "set": "nodemon src/set-env.ts",
+        "get": "node dist/get-env.js",
+        "set": "node dist/set-env.js",
+        "get-dev": "nodemon src/get-env.ts",
+        "set-dev": "nodemon src/set-env.ts",
         "build": "rimraf dist && tsc --project tsconfig.build.json",
         "lint": "eslint --ignore-path .gitignore",
         "prepare": "husky install"
@@ -25,7 +26,8 @@
     },
     "homepage": "https://github.com/icapps/op-env#readme",
     "dependencies": {
-        "@1password/op-js": "^0.1.8"
+        "@1password/op-js": "^0.1.8",
+        "commander": "^10.0.0"
     },
     "devDependencies": {
         "@typescript-eslint/eslint-plugin": "^5.48.2",

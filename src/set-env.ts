@@ -1,5 +1,6 @@
 import fs from 'fs';
 import { item, validateCli, FieldAssignment } from '@1password/op-js';
+import { Command } from 'commander';
 
 validateCli().catch((error) => {
     // TODO: Stop execution of command
@@ -7,8 +8,14 @@ validateCli().catch((error) => {
     process.exit(1);
 });
 
-// first two args are node and the script name
-const [vault, envFile, title] = process.argv.slice(2);
+const program = new Command();
+program
+    .requiredOption('-v, --vault <vault>', 'Vault to create the item in')
+    .requiredOption('-f, --env-file <envFile>', 'Path to the env file')
+    .requiredOption('-t, --title <title>', 'Title of the item')
+    .parse(process.argv);
+
+const { vault, envFile, title } = program.opts();
 
 fs.readFile(envFile, 'utf8', (err, data) => {
     if (err) {

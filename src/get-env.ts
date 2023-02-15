@@ -1,5 +1,6 @@
 import fs from 'fs';
 import { item, validateCli, NotesField } from '@1password/op-js';
+import { Command } from 'commander';
 
 validateCli().catch((error) => {
     // TODO: Stop execution of command
@@ -7,9 +8,16 @@ validateCli().catch((error) => {
     process.exit(1);
 });
 
-// first two args are node and the script name
-// TODO: param names
-const [itemNameOrId, environment] = process.argv.slice(2);
+const program = new Command();
+program
+    .requiredOption('-n, --name <name>', 'Name of the item')
+    .option(
+        '-e, --environment <environment>',
+        'Environment to create the item in'
+    )
+    .parse(process.argv);
+
+const { name: itemNameOrId, environment } = program.opts();
 
 // Get Secure Note from 1password
 const response = item.get(itemNameOrId);
