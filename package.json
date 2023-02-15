@@ -3,16 +3,16 @@
     "version": "1.0.0",
     "description": "Get and set environment variables in 1password",
     "scripts": {
-        "get": "node dist/get-env.js",
-        "set": "node dist/set-env.js",
-        "get-dev": "nodemon src/get-env.ts",
+        "get": "node dist/scripts/get-env.js",
+        "set": "node dist/scripts/set-env.js",
+        "get-dev": "nodemon scripts/get-env.ts",
         "start": "nodemon src/index.ts",
         "build": "rimraf dist && tsc --project tsconfig.build.json",
         "lint": "eslint --ignore-path .gitignore",
         "prepare": "husky install"
     },
     "bin": {
-        "op-env": "./dist/index.js"
+        "op-env": "./dist/src/index.js"
     },
     "repository": {
         "type": "git",
