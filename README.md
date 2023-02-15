@@ -1,6 +1,6 @@
-# typescript-starter
+# OP-ENV
 
-typescript-starter is starter template to quickly get started with TypeScript 🏎️
+op-env is a project that uses the 1password cli (op) to convert a secure note in a 1password vault to a local .env file with plain text secrets (for development purposes) and a .env.secrets file with references to 1password entries which you can use in ci.
 
 ## Contents
 
@@ -40,24 +40,10 @@ npm run build
 npm run start
 ```
 
-#### Docker
-
-```bash
-# Create a Docker image
-docker build -t typescript-starter .
-# Start up a Docker container
-docker run --name typescript-starter -it typescript-starter
-
-# Or just use Docker Compose
-docker compose up
-```
-
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first
 to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
 
 ## License
 
