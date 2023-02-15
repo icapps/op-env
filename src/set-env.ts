@@ -1,19 +1,24 @@
-import { exec } from 'child_process';
 import fs from 'fs';
+import { item, validateCli, FieldAssignment } from '@1password/op-js';
+
+validateCli().catch((error) => {
+    // TODO: Stop execution of command
+    console.error('CLI is not valid:', error.message);
+    process.exit(1);
+});
+
 // first two args are node and the script name
 const [vault, envFile, title] = process.argv.slice(2);
 
 fs.readFile(envFile, 'utf8', (err, data) => {
-    if (err) console.log('err', err);
+    if (err) {
+        console.error('err', err);
+        process.exit(1);
+    }
 
-    const lines = data.split(/\r?\n/).map((line) => JSON.stringify(line));
+    const fields: FieldAssignment[] = data
+        .split(/\r?\n/)
+        .map((line) => [line.split('=')[0], 'concealed', line.split('=')[1]]);
 
-    exec(
-        `op item create --category 'Secure Note' --title ${title} --vault ${vault} ${lines.join(
-            ' '
-        )}`,
-        (error) => {
-            if (error) console.log('error', error);
-        }
-    );
+    item.create(fields, { vault, title, category: 'Secure Note' });
 });

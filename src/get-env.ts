@@ -4,6 +4,7 @@ import { item, validateCli, NotesField } from '@1password/op-js';
 validateCli().catch((error) => {
     // TODO: Stop execution of command
     console.error('CLI is not valid:', error.message);
+    process.exit(1);
 });
 
 // first two args are node and the script name
