@@ -14,6 +14,7 @@ export default function createItemFromFile(
 
         const fields: FieldAssignment[] = data
             .split(/\r?\n/)
+            .filter((line) => !!line)
             .map((line) => [
                 line.split('=')[0],
                 'concealed',
