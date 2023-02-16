@@ -6,7 +6,7 @@
         "get": "node dist/get-env.js",
         "set": "node dist/set-env.js",
         "get-dev": "nodemon src/get-env.ts",
-        "start": "nodemon src/index.ts",
+        "start": "node ./dist/index.js",
         "build": "rimraf dist && tsc --project tsconfig.build.json",
         "lint": "eslint --ignore-path .gitignore",
         "prepare": "husky install"
