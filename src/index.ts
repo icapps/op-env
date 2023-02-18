@@ -13,19 +13,25 @@ validateCli().catch((error) => {
 program
     .command('get')
     .option('-n, --name <name>', 'Name of the item')
+    .option('-v, --vault <vault>', 'Vault to create the item in')
     .option(
         '-e, --environment <environment>',
         'Environment to create the item in'
     )
-    .action(({ name, environment }) => getEnvFrom1Password(name, environment));
+    .option('-c, --connect <connect>', 'use connect server')
+    .action(({ name, environment, vault, connect }) =>
+        getEnvFrom1Password(name, vault, environment, connect)
+    );
 
 program
     .command('set')
     .option('-v, --vault <vault>', 'Vault to create the item in')
     .option('-f, --env-file <envFile>', 'Path to the env file')
     .option('-t, --title <title>', 'Title of the item')
-    .action(({ vault, envFile, title }) =>
-        createItemFromFile(envFile, vault, title)
+    .option('-n, --name <name>', 'Name of the item')
+    .option('-c, --connect <connect>', 'use connect server')
+    .action(({ vault, envFile, title, name }) =>
+        createItemFromFile(envFile, vault, title, name)
     );
 
 program.parse(process.argv);
