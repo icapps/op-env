@@ -54,7 +54,7 @@ async function getEnvWithConnect(
     // Create new connector with HTTP Pooling
     const op = OnePasswordConnect({
         serverURL: 'http://localhost:8080',
-        token: 'eyJhbGciOiJFUzI1NiIsImtpZCI6IjJkZ3NjYnAydmkzcWo3dGtjbG12NWY0cDU0IiwidHlwIjoiSldUIn0.eyIxcGFzc3dvcmQuY29tL2F1dWlkIjoiUllIQzRLTlZEQkVZQlBWT0VTV09OMldETk0iLCIxcGFzc3dvcmQuY29tL3Rva2VuIjoiQkkyRHc3YTY4OUZqRE9Ya0RNZEVuT3RMNkh3MEprWmMiLCIxcGFzc3dvcmQuY29tL2Z0cyI6WyJ2YXVsdGFjY2VzcyJdLCIxcGFzc3dvcmQuY29tL3Z0cyI6W3sidSI6ImtsYzRyZXRieHZ2Z2pmM2NqNHkyenNvcm1xIiwiYSI6NDh9XSwiYXVkIjpbImNvbS4xcGFzc3dvcmQuY29ubmVjdCJdLCJzdWIiOiJaSTVNWlNYTlo1RUdSR0VFWTVISEkzRTNKQSIsImlhdCI6MTY3NDQ3Njk2NiwiaXNzIjoiY29tLjFwYXNzd29yZC5iNSIsImp0aSI6Im1rYWgyd3kyN3hjNXk1dmJjeHVtMnU1Z2E0In0.1P_bgm1e94o0fgYCEBkuIkIi5LsBVuyc7BSh-0OFr_yasNuvPV6BT9_vuqD6YTVO6pPhh_eQSbhpCwft099SVg',
+        token: 'string',
         keepAlive: true,
     });
 

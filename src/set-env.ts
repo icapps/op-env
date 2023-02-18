@@ -17,7 +17,6 @@ async function createItemWithConnect(
     });
     const opVault = await op.getVault(vault);
     if (!opVault) throw new Error('Vault not found');
-    console.log('opVault', opVault);
 
     try {
         fs.readFile(envFile, 'utf8', async (err, data) => {
@@ -34,7 +33,6 @@ async function createItemWithConnect(
                     value: line.split('=')[1],
                     type: 'concealed',
                 })) as unknown as FullItemAllOfFields[];
-            console.log('fields', fields);
 
             let existingItem;
             if (name) {
@@ -52,17 +50,6 @@ async function createItemWithConnect(
                     fields,
                 } as unknown as FullItem);
             }
-
-            // const fields: FieldAssignment[] = data
-            //     .split(/\r?\n/)
-            //     .filter((line) => !!line)
-            //     .map((line) => [
-            //         line.split('=')[0],
-            //         'concealed',
-            //         line.split('=')[1],
-            //     ]);
-
-            // item.create(fields, { vault, title, category: 'Secure Note' });
         });
     } catch (error) {
         console.log('error', error);
