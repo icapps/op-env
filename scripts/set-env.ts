@@ -2,6 +2,7 @@ import fs from 'fs';
 import { item, FieldAssignment } from '@1password/op-js';
 import { OnePasswordConnect, FullItem } from '@1password/connect';
 import { FullItemAllOfFields } from '@1password/connect/dist/model/fullItemAllOfFields';
+import config from '../src/config';
 
 async function createItemWithConnect(
     envFile: string,
@@ -11,8 +12,8 @@ async function createItemWithConnect(
 ): Promise<void> {
     // Create new connector with HTTP Pooling
     const op = OnePasswordConnect({
-        serverURL: 'http://localhost:8080',
-        token: 'test',
+        serverURL: config.CONNECT_URL,
+        token: config.CONNECT_TOKEN,
         keepAlive: true,
     });
     const opVault = await op.getVault(vault);
@@ -93,8 +94,9 @@ export default async function createItemFromFile(
     envFile: string,
     vault: string,
     title: string,
-    name: string
+    name: string,
+    connect: boolean
 ): Promise<void> {
-    createItemWithCli(envFile, vault, title, name);
-    await createItemWithConnect(envFile, vault, title, name);
+    if (connect) await createItemWithConnect(envFile, vault, title, name);
+    else createItemWithCli(envFile, vault, title, name);
 }
