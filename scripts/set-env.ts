@@ -53,7 +53,7 @@ async function createItemWithConnect(
             }
         });
     } catch (error) {
-        console.log('error', error);
+        console.error('error', error);
     }
 }
 
@@ -86,7 +86,7 @@ function createItemWithCli(
             }
         });
     } catch (error) {
-        console.log('error', error);
+        console.error('error', error);
     }
 }
 
