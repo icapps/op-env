@@ -5,6 +5,7 @@
     "scripts": {
         "get": "node dist/scripts/get-env.js",
         "set": "node dist/scripts/set-env.js",
+        "dev": "nodemon src/index.ts",
         "get-dev": "nodemon scripts/get-env.ts",
         "start": "nodemon src/index.ts",
         "build": "rimraf dist && tsc --project tsconfig.build.json",
