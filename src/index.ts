@@ -33,7 +33,6 @@ program
     .option('-v, --vault <vault>', 'Vault to create the item in')
     .option('-f, --env-file <envFile>', 'Path to the env file')
     .option('-t, --title <title>', 'Title of the item')
-    .option('-n, --name <name>', 'Name of the item')
     .option('-c, --connect', 'use connect server')
     .action(({ vault, envFile, title, name, connect }) =>
         createItemFromFile(envFile, vault, title, name, connect)

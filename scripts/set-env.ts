@@ -7,8 +7,7 @@ import config from '../src/config';
 async function createItemWithConnect(
     envFile: string,
     vault: string,
-    title: string,
-    name: string
+    title: string
 ): Promise<void> {
     // Create new connector with HTTP Pooling
     const op = OnePasswordConnect({
@@ -36,7 +35,7 @@ async function createItemWithConnect(
                 })) as unknown as FullItemAllOfFields[];
 
             let existingItem;
-            if (name) {
+            if (title) {
                 existingItem = await op.getItemByTitle(opVault.id!, title);
             }
             if (existingItem) {
@@ -60,8 +59,7 @@ async function createItemWithConnect(
 function createItemWithCli(
     envFile: string,
     vault: string,
-    title: string,
-    name: string
+    title: string
 ): void {
     try {
         fs.readFile(envFile, 'utf8', async (err, data) => {
@@ -78,7 +76,7 @@ function createItemWithCli(
                     'concealed',
                     line.split('=')[1],
                 ]);
-            const existingItem = item.get(name, { vault });
+            const existingItem = item.get(title, { vault });
             if (existingItem) {
                 item.edit(existingItem.title, fields);
             } else {
@@ -97,6 +95,6 @@ export default async function createItemFromFile(
     name: string,
     connect: boolean
 ): Promise<void> {
-    if (connect) await createItemWithConnect(envFile, vault, title, name);
-    else createItemWithCli(envFile, vault, title, name);
+    if (connect) await createItemWithConnect(envFile, vault, title);
+    else createItemWithCli(envFile, vault, title);
 }
