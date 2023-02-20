@@ -1,23 +1,30 @@
 #!/usr/bin/env node
 import { validateCli } from '@1password/op-js';
 import { program } from 'commander';
-import getEnvFrom1Password from './get-env';
-import createItemFromFile from './set-env';
+import getEnvFrom1Password from '../scripts/get-env';
+import createItemFromFile from '../scripts/set-env';
 
 validateCli().catch((error) => {
-    // TODO: Stop execution of command
     console.error('CLI is not valid:', error.message);
     process.exit(1);
 });
 
 program
     .command('get')
+    .option('-v, --vault <vault>', 'Vault that contains the item')
     .option('-n, --name <name>', 'Name of the item')
+    .option(
+        '-f, --format <format>',
+        'Format of the output files (possible values: "env" | "dart")'
+    )
+    .option('-l, --location <location>', 'Location of the output files')
     .option(
         '-e, --environment <environment>',
         'Environment to create the item in'
     )
-    .action(({ name, environment }) => getEnvFrom1Password(name, environment));
+    .action(({ vault, name, format, location, environment }) =>
+        getEnvFrom1Password(vault, name, format, location, environment)
+    );
 
 program
     .command('set')
