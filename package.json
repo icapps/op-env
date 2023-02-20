@@ -1,6 +1,6 @@
 {
     "name": "op-env",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "description": "Get and set environment variables in 1password",
     "scripts": {
         "get": "node dist/scripts/get-env.js",
