@@ -36,10 +36,10 @@ async function getEnvWithConnect(name: string, vault: string): Promise<Fields> {
         keepAlive: true,
     });
 
-    const vaults = await op.getVault(vault);
-    if (!vaults) throw new Error('Vault not found');
-    const itemForOp = await op.getItemByTitle(vaults.id!, name);
-    return (itemForOp.fields || []).reduce<{
+    const vaultFromOp = await op.getVault(vault);
+    if (!vaultFromOp) throw new Error('Vault not found');
+    const itemFromOp = await op.getItemByTitle(vaultFromOp.id!, name);
+    return (itemFromOp.fields || []).reduce<{
         values: Record<string, string>;
     }>(
         (acc, curr) => {
