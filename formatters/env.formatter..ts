@@ -2,7 +2,7 @@ type OutputFile = { filename: string; content: string };
 
 export function formatEnvValues(params: {
     values: Record<string, string>;
-    secrets: Record<string, string>;
+    secrets?: Record<string, string>;
     environment?: string;
     location?: string;
 }): OutputFile[] {
@@ -18,12 +18,13 @@ export function formatEnvValues(params: {
     });
 
     // Create .env.secrets<.environment> file with all references to 1password entries
-    files.push({
-        filename: `.env.secret${environment ? `.${environment}` : ''}`,
-        content: Object.keys(secrets)
-            .map((key) => `${key}=${secrets[key]}`)
-            .join('\n'),
-    });
+    if (secrets)
+        files.push({
+            filename: `.env.secret${environment ? `.${environment}` : ''}`,
+            content: Object.keys(secrets)
+                .map((key) => `${key}=${secrets[key]}`)
+                .join('\n'),
+        });
 
     return files;
 }

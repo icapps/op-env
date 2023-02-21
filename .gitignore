@@ -3,3 +3,4 @@ dist/
 .eslintcache
 .env.*
 .env
+!.env.example

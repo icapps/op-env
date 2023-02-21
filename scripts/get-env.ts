@@ -1,21 +1,19 @@
 import fs from 'fs';
 import { item, NotesField } from '@1password/op-js';
 import { OutputFileFormat } from 'types';
+import { OnePasswordConnect } from '@1password/connect';
+import config from '../src/config';
 import { formatValues } from '../formatters/formatter';
 
-export default async function getEnvFrom1Password(
-    vault: string,
-    name: string,
-    format: OutputFileFormat = 'env',
-    location?: string,
-    environment?: string
-): Promise<void> {
+type Fields = {
+    values: Record<string, string>;
+    secrets?: Record<string, string>;
+};
+
+function getEnvWithCli(name: string, vault: string): Fields {
     // Get Secure Note from 1password
     const response = item.get(name, { vault });
-    const { values, secrets } = (response.fields || []).reduce<{
-        values: Record<string, string>;
-        secrets: Record<string, string>;
-    }>(
+    return (response.fields || []).reduce<Fields>(
         (acc, curr) => {
             if ((curr as NotesField).purpose) return acc;
             return {
@@ -28,6 +26,45 @@ export default async function getEnvFrom1Password(
             secrets: {},
         }
     );
+}
+
+async function getEnvWithConnect(name: string, vault: string): Promise<Fields> {
+    // Create new connector with HTTP Pooling
+    const op = OnePasswordConnect({
+        serverURL: config.CONNECT_URL,
+        token: config.CONNECT_TOKEN,
+        keepAlive: true,
+    });
+
+    const vaultFromOp = await op.getVault(vault);
+    if (!vaultFromOp) throw new Error('Vault not found');
+    const itemFromOp = await op.getItemByTitle(vaultFromOp.id!, name);
+    return (itemFromOp.fields || []).reduce<{
+        values: Record<string, string>;
+    }>(
+        (acc, curr) => {
+            if (curr.purpose) return acc;
+            return {
+                values: { ...acc.values, [curr.label!]: curr.value! },
+            };
+        },
+        {
+            values: {},
+        }
+    );
+}
+
+export default async function getEnvFrom1Password(
+    vault: string,
+    name: string,
+    format: OutputFileFormat = 'env',
+    location?: string,
+    environment?: string,
+    connect?: boolean
+): Promise<void> {
+    const { values, secrets } = connect
+        ? await getEnvWithConnect(name, vault)
+        : getEnvWithCli(name, vault);
 
     // Generate files based on output file format
     const files = formatValues({
