@@ -4,7 +4,7 @@ import { formatEnvValues } from './env.formatter.';
 
 export function formatValues(params: {
     values: Record<string, string>;
-    secrets: Record<string, string>;
+    secrets?: Record<string, string>;
     format: OutputFileFormat;
     environment?: string;
 }) {

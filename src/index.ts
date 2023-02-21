@@ -13,6 +13,7 @@ program
     .command('get')
     .option('-v, --vault <vault>', 'Vault that contains the item')
     .option('-n, --name <name>', 'Name of the item')
+    .option('-v, --vault <vault>', 'Vault to create the item in')
     .option(
         '-f, --format <format>',
         'Format of the output files (possible values: "env" | "dart")'
@@ -22,8 +23,9 @@ program
         '-e, --environment <environment>',
         'Environment to create the item in'
     )
-    .action(({ vault, name, format, location, environment }) =>
-        getEnvFrom1Password(vault, name, format, location, environment)
+    .option('-c, --connect', 'use connect server')
+    .action(({ vault, name, format, location, environment, connect }) =>
+        getEnvFrom1Password(vault, name, format, location, environment, connect)
     );
 
 program
@@ -31,8 +33,9 @@ program
     .option('-v, --vault <vault>', 'Vault to create the item in')
     .option('-f, --env-file <envFile>', 'Path to the env file')
     .option('-t, --title <title>', 'Title of the item')
-    .action(({ vault, envFile, title }) =>
-        createItemFromFile(envFile, vault, title)
+    .option('-c, --connect', 'use connect server')
+    .action(({ vault, envFile, title, name, connect }) =>
+        createItemFromFile(envFile, vault, title, name, connect)
     );
 
 program.parse(process.argv);
